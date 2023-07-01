@@ -33,8 +33,8 @@ export class AuthService {
 
   login(userData, response) {
     const accessToken = this.getAuthToken(userData);
-    const expiry=parseInt(process.env.ACCESS_CODE_EXPIRY);
-    const expires = new Date(Date.now() +expiry);
+    const expiry = parseInt(process.env.ACCESS_CODE_EXPIRY);
+    const expires = new Date(Date.now() + expiry);
     return response
       .cookie(process.env.COOKIE_NAME, accessToken, {
         httpOnly: true,
