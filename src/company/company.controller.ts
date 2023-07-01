@@ -31,4 +31,12 @@ export class CompanyController {
     const userId = new mongoose.Types.ObjectId(req["user"].id);
     return this.companyService.find(userId);
   }
+
+  @UseGuards(new JwtAuthGuard('jwt'))
+@Delete()
+remove(@Req() req: Request) {
+  const userId = new mongoose.Types.ObjectId(req["user"].id);
+  return this.companyService.remove(userId);
+}
+
 }

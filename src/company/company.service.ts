@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose, { Model } from 'mongoose';
 import Company from './company.schema';
@@ -193,4 +193,35 @@ export class CompanyService {
       offices: company.offices,
     };
   }
+
+  async remove(userId: mongoose.Types.ObjectId): Promise<any> {
+    const session = await this.companyModel.startSession();
+    session.startTransaction();
+  
+    try {
+      const companies = await this.companyModel.findOneAndDelete({ user: userId }, {
+        session,
+      });
+  
+      if (!companies) {
+        throw new NotFoundException('Company not found');
+      }
+
+      const company = JSON.parse(JSON.stringify(companies[0]));
+  
+      await this.contactModel.deleteMany({ company: company._id }, { session });
+      await this.officeModel.deleteMany({ company: company._id }, { session });
+      await this.legalModel.deleteOne({ _id: company.legalInformation }, { session });
+  
+      await session.commitTransaction();
+      session.endSession();
+  
+      return company;
+    } catch (error) {
+      await session.abortTransaction();
+      session.endSession();
+      throw error;
+    }
+  }
+  
 }
