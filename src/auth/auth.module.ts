@@ -13,7 +13,7 @@ import UserSchema from 'src/users/users.schema';
   controllers: [AuthController],
   imports: [
     UsersModule,
-    MongooseModule.forFeature([{ name: "User", schema: UserSchema }]),
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => {
@@ -27,6 +27,6 @@ import UserSchema from 'src/users/users.schema';
       inject: [ConfigService],
     }),
   ],
-  providers: [AuthStrategy, AuthService,UsersService],
+  providers: [AuthStrategy, AuthService, UsersService],
 })
 export class AuthModule {}
