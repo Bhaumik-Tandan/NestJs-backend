@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   getAuthToken(userData) {
-    const payload = { id: userData.id, role: userData.role };
+    const payload = { id: userData.id};
     const accessToken = this.jwtService.sign(payload);
     return accessToken;
   }
@@ -55,8 +55,11 @@ export class AuthService {
       generalError('Invalid Credentials', 401);
     }
     const response = await AuthService.comparePassword(user, login.password);
+    if (!response) {
+      generalError('Invalid Credentials', 401);
+    }
 
-    return response;
+    return user;
   }
 
   static comparePassword(user, password: string): Promise<boolean> {

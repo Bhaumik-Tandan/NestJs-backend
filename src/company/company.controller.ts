@@ -11,8 +11,7 @@ import {
 } from '@nestjs/common';
 import { CompanyService } from './company.service';
 import mongoose from 'mongoose';
-import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
-import { request } from 'http';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('company')
 export class CompanyController {
