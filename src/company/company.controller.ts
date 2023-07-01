@@ -6,23 +6,30 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
+  Req,
 } from '@nestjs/common';
 import { CompanyService } from './company.service';
 import mongoose from 'mongoose';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
+import { request } from 'http';
 
 @Controller('company')
 export class CompanyController {
   constructor(private readonly companyService: CompanyService) {}
 
+  @UseGuards(new JwtAuthGuard('jwt'))
   @Post()
-  create(@Body() createCompanyDto) {
-    createCompanyDto.user = '64a055c107ae996be0bcc481';
+  create(@Req() req: Request,@Body() createCompanyDto) {
+    const {id: userId} = req["user"];
+    createCompanyDto.user = userId;
     return this.companyService.create(createCompanyDto);
   }
 
+  @UseGuards(new JwtAuthGuard('jwt'))
   @Get()
-  find() {
-    const userId = new mongoose.Types.ObjectId('64a055c107ae996be0bcc481');
+  find(@Req() req: Request) {
+    const userId = new mongoose.Types.ObjectId(req["user"].id);
     return this.companyService.find(userId);
   }
 }
