@@ -7,8 +7,8 @@ import { Model } from 'mongoose';
 export class UsersService {
     constructor(@InjectModel("User") private userModel: Model<"User">) {}
 
-    async create(createCatDto)  {
-        const createdCat = new this.userModel(createCatDto);
-        return createdCat.save();
+    async create(createUserBody)  {
+        const createdUser = new this.userModel(createUserBody);
+        return createdUser.save();
       }
 }
