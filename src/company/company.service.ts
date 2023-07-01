@@ -207,7 +207,7 @@ export class CompanyService {
         throw new NotFoundException('Company not found');
       }
 
-      const company = JSON.parse(JSON.stringify(companies[0]));
+      const company = JSON.parse(JSON.stringify(companies));
   
       await this.contactModel.deleteMany({ company: company._id }, { session });
       await this.officeModel.deleteMany({ company: company._id }, { session });
