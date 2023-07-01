@@ -2,9 +2,16 @@ import { Schema } from 'mongoose';
 
 const addressSchema = new Schema(
   {
-    type:{
+    type: {
       type: String,
-      enum: ['Registered Office', 'Corporate Office', 'Branch Office','Site Office','Client Office','Head Office'],
+      enum: [
+        'Registered Office',
+        'Corporate Office',
+        'Branch Office',
+        'Site Office',
+        'Client Office',
+        'Head Office',
+      ],
     },
     line1: {
       type: String,
@@ -13,6 +20,9 @@ const addressSchema = new Schema(
     line2: {
       type: String,
       required: true,
+    },
+    contry: {
+      type: String,
     },
     city: {
       type: String,

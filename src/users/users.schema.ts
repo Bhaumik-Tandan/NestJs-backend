@@ -10,14 +10,14 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    name:{
+    name: {
       type: String,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,
   },
 );
 
-export default {name:'User',schema:UserSchema};
+export default { name: 'User', schema: UserSchema };

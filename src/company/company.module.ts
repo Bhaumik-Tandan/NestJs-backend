@@ -10,7 +10,16 @@ import addressSchema from './company.schema/address.schema';
 import legalSchema from './company.schema/legal.schema';
 
 @Module({
-  imports: [MongooseModule.forFeature([CompanySchema, officeSchema,contactSchema,usersSchema,addressSchema,legalSchema])],
+  imports: [
+    MongooseModule.forFeature([
+      CompanySchema,
+      officeSchema,
+      contactSchema,
+      usersSchema,
+      addressSchema,
+      legalSchema,
+    ]),
+  ],
   controllers: [CompanyController],
   providers: [CompanyService],
 })

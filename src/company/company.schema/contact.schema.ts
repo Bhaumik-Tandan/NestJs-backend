@@ -7,10 +7,16 @@ const contactSchema = new Schema(
       type: String,
       enum: ['Mr', 'Mrs', 'Miss', 'Ms'],
       validate: {
-        validator: function() {
+        validator: function () {
           return (
-            (this.company != null && this.designation != null && this.name != null && this.title != null) ||
-            (this.company == null && this.designation == null && this.name == null && this.title == null)
+            (this.company != null &&
+              this.designation != null &&
+              this.name != null &&
+              this.title != null) ||
+            (this.company == null &&
+              this.designation == null &&
+              this.name == null &&
+              this.title == null)
           );
         },
         message: 'Contact details of company should be there',
