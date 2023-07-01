@@ -6,11 +6,11 @@ const addressSchema = new Schema(
       type: String,
       enum: ['Registered Office', 'Corporate Office', 'Branch Office','Site Office','Client Office','Head Office'],
     },
-    addressLine1: {
+    line1: {
       type: String,
       required: true,
     },
-    addressLine2: {
+    line2: {
       type: String,
       required: true,
     },
@@ -22,7 +22,7 @@ const addressSchema = new Schema(
       type: String,
       required: true,
     },
-    pinode: {
+    pincode: {
       type: String,
       required: true,
       RegExp: /^\d{6}$/,

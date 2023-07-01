@@ -13,7 +13,7 @@ const contactSchema = new Schema(
             (this.company == null && this.designation == null && this.name == null && this.title == null)
           );
         },
-        message: 'Either all fields should be present or all should be absent.',
+        message: 'Contact details of company should be there',
       },
     },
     name: {

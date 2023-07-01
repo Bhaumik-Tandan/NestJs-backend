@@ -15,26 +15,8 @@ export class CompanyController {
 
   @Post()
   create(@Body() createCompanyDto) {
+    createCompanyDto.user='64a0061259a176e4bd794ee9';
     return this.companyService.create(createCompanyDto);
   }
 
-  @Get()
-  findAll() {
-    return this.companyService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.companyService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCompanyDto) {
-    return this.companyService.update(+id, updateCompanyDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.companyService.remove(+id);
-  }
 }

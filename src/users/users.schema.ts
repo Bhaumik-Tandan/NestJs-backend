@@ -20,4 +20,4 @@ const UserSchema = new Schema(
   },
 );
 
-export default UserSchema;
+export default {name:'User',schema:UserSchema};

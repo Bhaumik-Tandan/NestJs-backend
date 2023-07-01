@@ -6,8 +6,8 @@ import UserSchema from './users.schema';
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel('User')
-    private userModel: Model<{ name: 'User'; schema: typeof UserSchema }>,
+    @InjectModel(UserSchema.name)
+    private userModel: Model<typeof UserSchema>,
   ) {}
 
   async create(createUserBody) {

@@ -1,5 +1,6 @@
 import { Schema } from "mongoose";
 import legalSchema from "./legal.schema";
+import usersSchema from "src/users/users.schema";
 
 const companySchema = new Schema(
     {
@@ -27,10 +28,11 @@ const companySchema = new Schema(
         legalInformation:{
             type: Schema.Types.ObjectId,
             ref: legalSchema.name,
+            required: true,
         },
         user: {
             type: Schema.Types.ObjectId,
-            ref: 'User',
+            ref: usersSchema.name,
             required: true,
             unique: true,
         }

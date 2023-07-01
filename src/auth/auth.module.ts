@@ -13,7 +13,7 @@ import UserSchema from 'src/users/users.schema';
   controllers: [AuthController],
   imports: [
     UsersModule,
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+    MongooseModule.forFeature([UserSchema]),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => {
