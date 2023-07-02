@@ -78,12 +78,12 @@ export class CompanyService {
     const { address, contact } = officeDetails;
     const { _id: addressId } = await this.createAddress(
       address,
-      companyId,
+      null,
       session,
     );
     const { _id: contactId } = await this.createContact(
       contact,
-      companyId,
+      null,
       session,
     );
     const office = new this.officeModel({
