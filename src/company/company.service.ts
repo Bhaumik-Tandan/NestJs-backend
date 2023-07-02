@@ -179,6 +179,10 @@ export class CompanyService {
 
     const company = companies[0];
     console.log(company);
+    const registrationAddressID = company.legalInformation[0].registrationAddress;
+    const registrationAddress = await this.addressModel.findById(registrationAddressID);
+    company.legalInformation[0].registrationAddress = registrationAddress;
+    
 
     return {
       about: {
@@ -189,7 +193,7 @@ export class CompanyService {
         website: company.about.website,
       },
       contactDetails: company.contactDetails,
-      legalInformation: company.legalInformation,
+      legalInformation: company.legalInformation[0],
       offices: company.offices,
     };
   }
