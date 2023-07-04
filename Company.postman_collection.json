@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "161e06ca-ed01-486c-afb6-ae0a00f13a88",
+		"name": "Company",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16798660"
+	},
+	"item": [
+		{
+			"name": "Add Company",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"about\": { \n    \"employeeStrength\": 100,\n    \"name\": \"ABC Company\",\n    \"industry\": \"Technology\",\n    \"description\": \"A software development company\",\n    \"website\": \"https://www.example.com\"\n  },\n  \"contactDetails\": [\n    {\n      \"title\": \"Mr\",\n      \"name\": \"John Doe\",\n      \"phoneNumber\": \"1234567890\",\n      \"email\": \"john.doe@example.com\",\n      \"designation\": \"Manager\"\n    },\n    {\n      \"title\": \"Ms\",\n      \"name\": \"Jane Smith\",\n      \"phoneNumber\": \"9876543210\",\n      \"email\": \"jane.smith@example.com\",\n      \"designation\": \"Director\"\n    }\n  ],\n  \"legalInformation\": {\n    \"companyType\": \"Private Limited\",\n    \"registrationNumber\": \"123456789\",\n    \"yearOfRegistration\": 2022,\n    \"tin\": \"987654321\",\n    \"lastFinancialYearTurnover\": 1000000,\n    \"registrationAddress\": {\n      \"line1\": \"123 Main Street\",\n      \"line2\": \"Suite 5\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"pincode\": \"10001\",\n      \"country\": \"India\"\n    }\n  },\n  \"offices\": [\n    {\n      \"address\": {\n        \"type\": \"Registered Office\",\n        \"line1\": \"123 Street\",\n        \"line2\": \"Apartment 4\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"pincode\": \"12345\"\n      },\n      \"contact\": {\n        \"phoneNumber\": \"1234567890\",\n        \"email\": \"john.doe@example.com\"\n      }\n    },\n    {\n      \"address\": {\n        \"type\": \"Registered Office\",\n        \"line1\": \"456 Avenue\",\n        \"line2\": \"Suite 10\",\n        \"city\": \"Los Angeles\",\n        \"state\": \"CA\",\n        \"pincode\": \"98765\"\n      },\n      \"contact\": {\n        \"phoneNumber\": \"1234567890\",\n        \"email\": \"john.doe@example.com\"\n      }\n    }\n  ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}company",
+					"host": [
+						"{{url}}company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}company",
+					"host": [
+						"{{url}}company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}company",
+					"host": [
+						"{{url}}company"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
